@@ -37,7 +37,7 @@ public class MapMatrix<Vec extends Vector> extends Matrix {
   }
 
   public Vector getRow(int idx) {
-    return mapMatrix.get(idx);
+    return mapMatrix.get((long)idx);
   }
 
   public Vector getRow(long idx) {
