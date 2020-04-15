@@ -26,18 +26,20 @@ import com.tencent.angel.ml.math2.vector._
 import org.junit.{BeforeClass, Test}
 
 object BaseFuncTest {
+
+  //初始基础参数
   val matrixId = 0
   val rowId = 0
   val clock = 0
   val capacity: Int = 1000
   val dim: Int = capacity * 1000
 
-  val intrandIndices: Array[Int] = new Array[Int](capacity)
-  val longrandIndices: Array[Long] = new Array[Long](capacity)
+  val intrandIndices: Array[Int] = new Array[Int](capacity) // int随机索引
+  val longrandIndices: Array[Long] = new Array[Long](capacity) //long随机索引
   val intsortedIndices: Array[Int] = new Array[Int](capacity)
   val longsortedIndices: Array[Long] = new Array[Long](capacity)
 
-  val intValues: Array[Int] = new Array[Int](capacity)
+  val intValues: Array[Int] = new Array[Int](capacity) //int向量值
   val longValues: Array[Long] = new Array[Long](capacity)
   val floatValues: Array[Float] = new Array[Float](capacity)
   val doubleValues: Array[Double] = new Array[Double](capacity)
@@ -55,7 +57,7 @@ object BaseFuncTest {
     val rand = new util.Random()
     val set = new util.HashSet[Int]()
     var idx = 0
-    while (set.size() < capacity) {
+    while (set.size() < capacity) { //初始int索引
       val t = rand.nextInt(dim)
       if (!set.contains(t)) {
         intrandIndices(idx) = t
@@ -66,7 +68,7 @@ object BaseFuncTest {
 
     set.clear()
     idx = 0
-    while (set.size() < capacity) {
+    while (set.size() < capacity) { //初始long索引
       val t = rand.nextInt(dim)
       if (!set.contains(t)) {
         longrandIndices(idx) = t
@@ -75,12 +77,15 @@ object BaseFuncTest {
       }
     }
 
+    //复制int sort索引
     System.arraycopy(intrandIndices, 0, intsortedIndices, 0, capacity)
     util.Arrays.sort(intsortedIndices)
 
+    //复制long sort索引
     System.arraycopy(longrandIndices, 0, longsortedIndices, 0, capacity)
     util.Arrays.sort(longsortedIndices)
 
+    //初始所有的随机值
     doubleValues.indices.foreach { i =>
       doubleValues(i) = rand.nextDouble()
     }
@@ -219,7 +224,7 @@ class BaseFuncTest {
       } else {
         assert(v.numZeros == dim)
         assert(v.getDim == dim)
-//        assert(v.size == 0.0)
+        //        assert(v.size == 0.0)
       }
       val c = v.clone()
       assert(c != v & c.sum() == v.sum() & c.getDim == v.getDim & c.max == v.max & c.min == v.min & c.size == v.size)
@@ -315,7 +320,7 @@ class BaseFuncTest {
       } else {
         assert(v.numZeros == dim)
         assert(v.getDim == dim)
-//        assert(v.size == 0.0)
+        //        assert(v.size == 0.0)
       }
       val c = v.clone()
       assert(c != v & c.sum() == v.sum() & c.getDim == v.getDim & c.max == v.max & c.min == v.min & c.size == v.size)
@@ -411,7 +416,7 @@ class BaseFuncTest {
       } else {
         assert(v.numZeros == dim)
         assert(v.getDim == dim)
-//        assert(v.size == 0.0)
+        //        assert(v.size == 0.0)
       }
       val c = v.clone()
       assert(c != v & c.sum() == v.sum() & c.getDim == v.getDim & c.max == v.max & c.min == v.min & c.size == v.size)
@@ -506,7 +511,7 @@ class BaseFuncTest {
       } else {
         assert(v.numZeros == dim)
         assert(v.getDim == dim)
-//        assert(v.size == 0)
+        //        assert(v.size == 0)
       }
       val c = v.clone()
       assert(c != v & c.sum() == v.sum() & c.getDim == v.getDim & c.max == v.max & c.min == v.min & c.size == v.size)
@@ -683,7 +688,7 @@ class BaseFuncTest {
       } else {
         assert(v.numZeros == dim)
         assert(v.getDim == dim)
-//        assert(v.size == 0.0)
+        //        assert(v.size == 0.0)
       }
       val c = v.clone()
       assert(c != v & c.sum() == v.sum() & c.getDim == v.getDim & c.max == v.max & c.min == v.min & c.size == v.size)
@@ -770,7 +775,7 @@ class BaseFuncTest {
       } else {
         assert(v.numZeros == dim)
         assert(v.getDim == dim)
-//        assert(v.size == 0.0)
+        //        assert(v.size == 0.0)
       }
       val c = v.clone()
       assert(c != v & c.sum() == v.sum() & c.getDim == v.getDim & c.max == v.max & c.min == v.min & c.size == v.size)
@@ -856,7 +861,7 @@ class BaseFuncTest {
       } else {
         assert(v.numZeros == dim)
         assert(v.getDim == dim)
-//        assert(v.size == 0.0)
+        //        assert(v.size == 0.0)
       }
       val c = v.clone()
       assert(c != v & c.sum() == v.sum() & c.getDim == v.getDim & c.max == v.max & c.min == v.min & c.size == v.size)
@@ -943,7 +948,7 @@ class BaseFuncTest {
         assert(v.numZeros == dim)
         assert(v.norm == 0.0)
         assert(v.getDim == dim)
-//        assert(v.size == 0.0)
+        //        assert(v.size == 0.0)
       }
       val c = v.clone()
       assert(c != v & c.sum() == v.sum() & c.getDim == v.getDim & c.max == v.max & c.min == v.min & c.size == v.size)
