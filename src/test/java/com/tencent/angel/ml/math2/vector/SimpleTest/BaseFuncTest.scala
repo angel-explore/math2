@@ -252,6 +252,7 @@ class BaseFuncTest {
     assert(v4.getDim != sdim)
   }
 
+  //IntFloatVector测试
   @Test
   def IntFloatVectortest() {
     val zero_list = new util.ArrayList[IntFloatVector]
